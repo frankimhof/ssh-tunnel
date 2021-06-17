@@ -23,8 +23,3 @@ docker exec --user ${USER} -t ssh-server sshpass -p abcd ssh-copy-id ${USER}@${R
 #docker exec --user ${USER} -t ssh-server /bin/bash -c "cat ${SSH_ID_PATH}/id_rsa.pub | sshpass -p ${PASSWD} ssh ${USER}@${ENDPOINTIP} 'cat >> .ssh/authorized_keys; exit 0'"
 
 
-# create an ssh tunnel to the server. Forward local port 80 to remote port 80, enabling the client to reach the webpage at REMOTEIP:80.
-docker exec -t ssh-client ssh -fNT -L ${CLIENTIP}:80:${REMOTEIP}:80 ${USER}@${SERVERIP}
-
-# entering the ssh-client container
-docker exec -it ssh-client /bin/sh

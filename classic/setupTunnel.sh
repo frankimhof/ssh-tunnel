@@ -1,7 +1,6 @@
 USER="testuser"
 PASSWD="abcd"
 SSH_ID_PATH=/home/testuser/.ssh
-docker exec -it ssh-client /bin/sh ./createIdentityKeys.sh #generate identity keys for the client
 docker exec -it ssh-server /bin/sh ./startServer.sh #start an ssh server in the ssh-server container (and also generate identity keys)
 docker exec -it ssh-remote /bin/sh ./startServer.sh #start an ssh server in the ssh-remote container (and also generate identity keys)
 

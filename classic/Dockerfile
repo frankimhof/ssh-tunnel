@@ -26,7 +26,7 @@ RUN sed -i "s/AllowTcpForwarding no/AllowTcpForwarding yes/" sshd_config
 # server can then be started by calling ./start_server.sh which runs /usr/sbin/sshd -f /home/testuser/sshd_config
 
 # change host key path
-RUN sed -i "s/#HostKey \/etc\/ssh\/ssh_host_rsa_key/HostKey ~\/.ssh\/id_rsa/" sshd_config
+RUN sed -i "s/#HostKey \/etc\/ssh\/ssh_host_rsa_key/HostKey ~\/.ssh\/ssh_host_rsa_key/" sshd_config
 #RUN sed -i "s/#HostKey \/etc\/ssh\/ssh_host_rsa_key/HostKey ~\/.ssh\/ssh_host_rsa_key/" sshd_config
 
 # set UsePAM, otherwise we can't connect

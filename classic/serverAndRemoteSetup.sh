@@ -32,20 +32,22 @@ fi
 # start containers
 docker run ${DOCKER_OPTIONS}  -p ${SSH_PORT}:${SSH_PORT} --name ssh-server ${IMAGE_TAG}
 docker run ${DOCKER_OPTIONS} --name ssh-remote ${IMAGE_TAG}
-# create identity keys for the ssh-server container
+# create host keys for the ssh-server container
+echo "### Creating host keys (rsa) for the ssh-server container..."
 evaldbg "docker exec -u ${USER} ssh-server /bin/sh -c 'ssh-keygen -t rsa -f ~/.ssh/ssh_host_rsa_key -N \"\" -q'"
 if [[ $? -eq 0 ]]; then
-    echo "### [ OK ] ### identity keys generated!!!"
+    echo "### [ OK ] ### Generation of host keys was successfully."
 else
-    echo "### [FAIL] ### Error while starting the ssh server"
+    echo "### [FAIL] ### Error while generating host keys."
 fi
 
+echo "### Starting the ssh server in the ssh-server container..."
 # start ssh server in the ssh-server container
 evaldbg "docker exec -u ${USER} ssh-server /bin/sh -c '/usr/sbin/sshd -f sshd_config'"
 if [[ $? -eq 0 ]]; then
     echo "### [ OK ] ### Setup of ssh-server was successfull."
 else
-    echo "### [FAIL] ### Error while starting the ssh server"
+    echo "### [FAIL] ### Error while starting the ssh server."
 fi
 
 # WEBSERVER SETUP (ssh-remote)

@@ -11,7 +11,7 @@ USER="testuser"
 PASSWORD="abcd"
 PORT=${PORT:=22}
 IMAGE_TAG="ssh-tunnel"
-DOCKER_OPTIONS="-dit --rm -u testuser -p ${PORT}:${PORT}"
+DOCKER_OPTIONS="-dit --rm -u testuser -p ${PORT}:${PORT} -p 80:80"
 DEBUGLVL=${DEBUGLVL:=0}
 
 function evaldbg {

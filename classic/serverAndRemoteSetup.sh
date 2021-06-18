@@ -67,17 +67,18 @@ docker exec -u root -t remote-webserver /bin/sh -c "cp /etc/lighttpd/lighttpd.co
 docker exec -t remote-webserver /bin/sh -c "sed -i 's/\/run\/lighttpd.pid/\/var\/run\/lighttpd\/lighttpd.pid/' lighttpd.conf"
 docker exec -t remote-webserver /bin/sh -c "sed -i 's/\/var\/www\/localhost/\/var\/www\/webserver/' lighttpd.conf"
 docker exec -t remote-webserver /bin/sh -c "sed -i 's/htdocs/html/' lighttpd.conf"
-docker exec -t remote-webserver /bin/sh -c "sed -i '42s/^/#/' lighttpd.conf" #comment out the inclusion of mime-types.conf
+docker exec -t remote-webserver /bin/sh -c "echo 'mimetype.assign=(\".html\"=>\"text/html\")'> /home/${USER}/mime-types.conf"
+#docker exec -t remote-webserver /bin/sh -c "sed -i '42s/^/#/' lighttpd.conf" #comment out the inclusion of mime-types.conf
 
 # create a simple html file
-docker exec -t remote-webserver /bin/sh -c "echo 'Congrats, you reached the webpage of the remote webserver!' > /var/www/webserver/html/index.html"
+docker exec -t remote-webserver /bin/sh -c "echo '<!DOCTYPE html><html><body><h1>Congrats, you reached the webpage of the remote webserver!</h1></body></html>' > /var/www/webserver/html/index.html"
 
 # start the webserver
 echo "### Setting up the webserver in the remote-webserver container..."
 evaldbg "docker exec -t remote-webserver /usr/sbin/lighttpd -f /home/${USER}/lighttpd.conf"
 if [[ $? -eq 0 ]]; then
     echo -e "### [ OK ] ###\n\n"
-    echo -e "### ssh server and remote (webserver) succsessfully set up.\n### Start the ssh-client container with the following command (on another machine):\n./clientSetup.sh <SSH_SERVER_IP> <REMOTE_WEBSERVER_CONTAINER_IP>\n<SSH_SERVER_IP> = the ip address of the machine running the ssh-server container\n<REMOTE_WEBSERVER_CONTAINER_IP> = ${REMOTEIP}"
+    echo -e "### ssh server and remote (webserver) succsessfully set up.\n### Start the ssh-client container with the following command (on another machine):\n./clientSetup.sh <SSH_SERVER_IP> <REMOTE_WEBSERVER_CONTAINER_IP>\n<SSH_SERVER_IP> = the ip address of this machine\n<REMOTE_WEBSERVER_CONTAINER_IP> = ${REMOTEIP}"
 else
     echo "### [FAIL] ### Error while starting the ssh server"
     exit 1

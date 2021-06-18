@@ -65,7 +65,7 @@ if [[ $? -eq 0 ]]; then
   echo -e "--> (on this machine): open up a webbrowser and visit localhost"
   echo -e "--> (on this machine): curl localhost"
   echo -e "--> (inside the [${CONTAINER_NAME}] container): curl ${CLIENT_IP}'\n"
-  echo -e ================================================================================"
+  echo -e "================================================================================"
 else
   echo -e "### [FAIL] ### Error while setting up the ssh tunnel."
 fi

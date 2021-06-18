@@ -3,9 +3,8 @@ USER="testuser"
 DEBUGLVL=${DEBUGLVL:=0}
 SSH_PORT=${SSH_PORT:=22}
 # publish port 22 to port 22 of host (for ssh)
-# and also port 80 for webserver
 
-DOCKER_OPTIONS="-dit --rm -u testuser"
+DOCKER_OPTIONS="-dit --rm -u ${USER}"
 
 function evaldbg {
     if [ $DEBUGLVL -ge 2 ]; then

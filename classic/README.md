@@ -8,7 +8,7 @@ The following is an instruction to create and test an ssh-tunnel (using [openssh
 # Installation
 Clone the repository and build the image on both machines **A** and **B**.
 ## Clone the repository
-clone this repository and cd into it using the following commands.
+clone this repository and cd into the `classic` directory using following commands.
 ```
 git clone --depth 1 --branch main https://github.com/frankimhof/ssh-tunnel.git
 cd ssh-tunnel/classic/

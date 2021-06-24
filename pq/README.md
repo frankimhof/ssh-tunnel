@@ -85,8 +85,11 @@ curl localhost
 
 # Changing the algorithms used
 Per default, the following algorithms are used:
-- Key Exchange Algorithm: kyber-512
-- Signature Algorithm: dilithium2
+- Key Encapsulation Mechanism: **kyber-512**
+- Signature Algorithm: **dilithium2**
 
-To use different algorithms, change the **KEM_ALG** and **SIG_ALG** variables in [serverAndRemoteSetup.sh](/pq/serverAndRemoteSetup.sh) and [clientSetup.sh](/pq/clientSetup.sh) accordingly.\
 A list of all supported algoritms can be found [here](https://github.com/open-quantum-safe/openssh#supported-algorithms).
+
+In order to use different algorithms
+1. change the **KEM_ALG** and **SIG_ALG** variables in [serverAndRemoteSetup.sh](/pq/serverAndRemoteSetup.sh) and [clientSetup.sh](/pq/clientSetup.sh) accordingly.
+2. restart the containers (just repeat the steps described in [Start the containers](#start-the-containers))

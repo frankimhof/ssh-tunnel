@@ -29,7 +29,10 @@ docker images
 
 # Start the containers
 Start the ssh-server and the webserver on machine **A**. Then, start the ssh-client on machine **B**.
+
 ## Start the ssh-server and the remote-webserver on machine A
+**IMPORTANT**: Make sure that port 2222 is not already in use.\
+\
 Assuming we are in `/ssh-tunnel/pq` on machine **A**
 ```
 ./serverAndRemoteSetup.sh
@@ -37,7 +40,7 @@ Assuming we are in `/ssh-tunnel/pq` on machine **A**
 This script will start two containers:
 1. **oqs-openssh-server**:\
 It is running an ssh-server (on port 2222).\
-The port 22 of the container is mapped to port 2222 of machine **A**.
+The port 2222 of the container is mapped to port 2222 of machine **A**.
 2. **remote-webserver**:\
 It is running a simple webserver (on port 80) (using [lighttpd](https://www.lighttpd.net/))
 
@@ -49,6 +52,8 @@ docker ps
 ```
 
 ## Start the ssh-client on machine B
+**IMPORTANT**: Make sure that port 80 is not already in use.\
+\
 Assuming we are in `/ssh-tunnel/pq` on machine **B**
 ```
 ./clientSetup.sh <SSH_SERVER_IP> <REMOTE_WEBSERVER_CONTAINER_IP>

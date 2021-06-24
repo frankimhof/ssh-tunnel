@@ -29,6 +29,8 @@ docker images
 # Start the containers
 Start the ssh-server and the webserver on machine **A**. Then, start the ssh-client on machine **B**.
 ## Start the ssh-server and the remote-webserver on machine A
+**IMPORTANT**: Make sure that port 22 is not already in use.\
+\
 Assuming we are in `/ssh-tunnel/classic` on machine **A**
 ```
 ./serverAndRemoteSetup.sh
@@ -48,6 +50,8 @@ docker ps
 ```
 
 ## Start the ssh-client on machine B
+**IMPORTANT**: Make sure that port 80 is not already in use.\
+\
 Assuming we are in `/ssh-tunnel/classic` on machine **B**
 ```
 ./clientSetup.sh <SSH_SERVER_IP> <REMOTE_WEBSERVER_CONTAINER_IP>

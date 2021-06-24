@@ -1,5 +1,16 @@
 # ssh-tunnel (local port forwarding)
-The following is an instruction to create and test an ssh-tunnel (using [open-quantum-safe/openssh](https://github.com/open-quantum-safe/openssh)).
+The following is an instruction to create and test an ssh-tunnel (using [open-quantum-safe/openssh](https://github.com/open-quantum-safe/openssh)).\
+
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+  * [Clone the repository](#clone-the-repository)
+  * [Build the docker image](#build-the-docker-image)
+- [Start the containers](#start-the-containers)
+  * [ssh-server and remote-webserver](#ssh-server-and-remote-webserver-on-machine-a)
+  * [ssh-client](#ssh-client-on-machine-b)
+- [Use the tunnel](#use-the-tunnel)
+- [Changing the algorithms used](#changing-the-algorithms-used)
+
 The Dockerfile was taken from [fhnw-ise-qcrypt/oqs-demos/tree/benchmark/openssh](https://github.com/fhnw-ise-qcrypt/oqs-demos/tree/main/openssh).
 
 # Prerequisites
@@ -30,7 +41,7 @@ docker images
 # Start the containers
 Start the ssh-server and the webserver on machine **A**. Then, start the ssh-client on machine **B**.
 
-## Start the ssh-server and the remote-webserver on machine A
+## ssh-server and remote-webserver on machine A
 **IMPORTANT**: Make sure that port 2222 is not already in use.\
 \
 Assuming we are in `/ssh-tunnel/pq` on machine **A**
@@ -51,7 +62,7 @@ If the script ran successfully, the containers will show up when issueing the fo
 docker ps
 ```
 
-## Start the ssh-client on machine B
+## ssh-client on machine B
 **IMPORTANT**: Make sure that port 80 is not already in use.\
 \
 Assuming we are in `/ssh-tunnel/pq` on machine **B**
@@ -71,3 +82,10 @@ Use one of the following options to test whether the tunnel works (if so, the we
 ```
 curl localhost
 ```
+
+# Changing the algorithms used
+Per default, the following algorithms are used:
+- Key Exchange Algorithm: kyber-512
+- Signature Algorithm: dilithium2
+To use different algorithms, change the **KEM_ALG** and **SIG_ALG** variables in [serverAndRemoteSetup.sh](/serverAndRemoteSetup) and [clientSetup.sh](/clientSetup.sh) accordingly.\
+A list of all supported algoritms can be found [here](https://github.com/open-quantum-safe/openssh#supported-algorithms).

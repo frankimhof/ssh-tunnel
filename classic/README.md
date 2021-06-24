@@ -1,5 +1,13 @@
 # ssh-tunnel (local port forwarding)
 The following is an instruction to create and test an ssh-tunnel (using [openssh](https://github.com/openssh)).
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+  * [Clone the repository](#clone-the-repository)
+  * [Build the docker image](#build-the-docker-image)
+- [Start the containers](#start-the-containers)
+  * [ssh-server and remote-webserver](#ssh-server-and-remote-webserver-on-machine-a)
+  * [ssh-client](#ssh-client-on-machine-b)
+- [Use the tunnel](#use-the-tunnel)
 
 # Prerequisites
 1. For this experiment, two machines are required, one for running the ssh-server and one for running the ssh-client. For clarity, the two machines will be called machine **A** and machine **B**.
@@ -28,7 +36,7 @@ docker images
 
 # Start the containers
 Start the ssh-server and the webserver on machine **A**. Then, start the ssh-client on machine **B**.
-## Start the ssh-server and the remote-webserver on machine A
+## ssh-server and remote-webserver on machine A
 **IMPORTANT**: Make sure that port 22 is not already in use.\
 \
 Assuming we are in `/ssh-tunnel/classic` on machine **A**
@@ -49,7 +57,7 @@ If the script ran successfully, the containers will show up when issueing the fo
 docker ps
 ```
 
-## Start the ssh-client on machine B
+## ssh-client on machine B
 **IMPORTANT**: Make sure that port 80 is not already in use.\
 \
 Assuming we are in `/ssh-tunnel/classic` on machine **B**

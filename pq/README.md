@@ -87,5 +87,6 @@ curl localhost
 Per default, the following algorithms are used:
 - Key Exchange Algorithm: kyber-512
 - Signature Algorithm: dilithium2
-To use different algorithms, change the **KEM_ALG** and **SIG_ALG** variables in [serverAndRemoteSetup.sh](/serverAndRemoteSetup) and [clientSetup.sh](/clientSetup.sh) accordingly.\
+
+To use different algorithms, change the **KEM_ALG** and **SIG_ALG** variables in [serverAndRemoteSetup.sh](/pq/serverAndRemoteSetup) and [clientSetup.sh](/pq/clientSetup.sh) accordingly.\
 A list of all supported algoritms can be found [here](https://github.com/open-quantum-safe/openssh#supported-algorithms).

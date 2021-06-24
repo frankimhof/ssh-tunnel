@@ -21,7 +21,7 @@ Build the docker image using the following command (don't forget the point at th
 ```
 docker build --build-arg MAKE_INSTALL=install -t oqs-openssh-img .
 ```
-the option -t is used to give the image a name (in this case **ssh-tunnel**).\
+the option -t is used to give the image a name (in this case **oqs-openssh-img**).\
 After a successfull build, the image **oqs-openssh-img** should show up when issueing the following command
 ```
 docker images

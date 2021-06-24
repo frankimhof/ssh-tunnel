@@ -50,7 +50,7 @@ fi
 
 # start ssh server in the corresponding container
 echo "### Starting the ssh server in the ${SSH_SERVER_CONTAINER_NAME} container..."
-evaldbg "docker exec -t ${SSH_SERVER_CONTAINER_NAME} /opt/oqs-ssh/sbin/sshd -o PubkeyAcceptedKeyTypes=${SIG_ALG} -o KexAlgorithms=${KEM_ALG} -p ${SSH_PORT}"
+evaldbg "docker exec ${SSH_SERVER_CONTAINER_NAME} /opt/oqs-ssh/sbin/sshd -o PubkeyAcceptedKeyTypes=${SIG_ALG} -o KexAlgorithms=${KEM_ALG} -p ${SSH_PORT}"
 #evaldbg "docker exec -u ${USER} ${SSH_SERVER_CONTAINER_NAME} /bin/sh -c '/usr/sbin/sshd -f sshd_config'"
 if [[ $? -eq 0 ]]; then
     echo -e "### [ OK ] ###\n\n"

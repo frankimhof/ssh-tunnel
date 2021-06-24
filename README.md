@@ -1,5 +1,5 @@
 # ssh-tunnel
-This repo provides scripts to set up an ssh-tunnel ([local port forwarding](https://www.ssh.com/academy/ssh/tunneling/example)) using either\
+This repo provides scripts to set up an ssh-tunnel ([local port forwarding](https://www.ssh.com/academy/ssh/tunneling/example)) using either
 - [openssh](https://github.com/open-quantum-safe/openssh) (with classical cryptohraphy) or
 - [open-quantum-safe/openssh](https://github.com/open-quantum-safe/openssh) (with post-quantum cryptography)
 
